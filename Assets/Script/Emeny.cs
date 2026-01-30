@@ -23,7 +23,7 @@ public class Emeny : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Move();
     }
     public void OnTriggerStay2D(Collider2D collision)
     {

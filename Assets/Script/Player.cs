@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 enum PlayerMask
 {
+    Me,
     Son,
     Passerby,
     Student,
@@ -31,6 +33,14 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         instance = this;
+    }
+    private void Start()
+    {
+        moveSpeed = 5f;
+    }
+    public void Update()
+    {
+        Move();
     }
     public void Move()
     {
