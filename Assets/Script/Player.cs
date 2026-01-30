@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-enum PlayerMask
+public enum PlayerMask
 {
     Me,
     Son,
@@ -41,6 +41,7 @@ public class Player : MonoBehaviour
     public void Update()
     {
         Move();
+        SetMask();
     }
     public void Move()
     {
@@ -51,6 +52,39 @@ public class Player : MonoBehaviour
     }
     public void Gameover()
     {
-        SceneManager.LoadScene(5);
+        SceneManager.LoadScene(4);
+    }
+    public void SetMask()
+    {
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+            mask = PlayerMask.Me;
+        }
+        if(Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            if (this.gameObject.scene == SceneManager.GetSceneByBuildIndex(1))
+            {
+                mask = PlayerMask.Son;
+            }
+            else if (this.gameObject.scene == SceneManager.GetSceneByBuildIndex(2))
+            {
+                mask = PlayerMask.Passerby;
+            }
+            else if (this.gameObject.scene == SceneManager.GetSceneByBuildIndex(3))
+            {
+                mask = PlayerMask.Student;
+            }
+        }
+        if(Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            if (this.gameObject.scene == SceneManager.GetSceneByBuildIndex(3))
+            {
+                mask = PlayerMask.Teacher;
+            }
+        }
+    }
+    public PlayerMask Mask
+    {
+        get { return mask; }
     }
 }
