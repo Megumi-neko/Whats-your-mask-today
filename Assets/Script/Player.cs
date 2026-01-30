@@ -45,10 +45,10 @@ public class Player : MonoBehaviour
     }
     public void Move()
     {
-        if(mask!=PlayerMask.Son)
-        movex = Input.GetAxis("Horizontal") * moveSpeed * Time.deltaTime;
-        movey = Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime;
-        transform.Translate(movex, movey, 0);
+        if (mask == PlayerMask.Son) return;
+            movex = Input.GetAxis("Horizontal") * moveSpeed * Time.deltaTime;
+            movey = Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime;
+            transform.Translate(movex, movey, 0);
     }
     public void Gameover()
     {
