@@ -107,7 +107,7 @@ MonoBehaviour:
   sceneController: {fileID: 0}
   image: {fileID: 0}
   confusion: 0
-  maxConfusion: 20
+  maxConfusion: 15
 --- !u!61 &8938397040550790499
 BoxCollider2D:
   m_ObjectHideFlags: 0

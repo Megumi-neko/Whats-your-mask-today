@@ -9,6 +9,7 @@ public class SceneController : MonoBehaviour
     [SerializeField] GameObject gameObject;
     private void Start()
     {
+        if(gameObject == null)  return;
         Invoke(nameof(Begin), 1f);
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -20,7 +21,7 @@ public class SceneController : MonoBehaviour
             Invoke (nameof(LoadNextScene), 1f);
         }
     }
-    private void LoadNextScene()
+    public void LoadNextScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
