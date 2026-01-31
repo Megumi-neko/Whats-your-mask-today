@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8449668875722865252}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,9 +28,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4161706596658935695}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 8.093, y: 7.292, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.9133, y: 1.9133, z: 1.9133}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -103,6 +103,9 @@ MonoBehaviour:
   movey: 0
   moveSpeed: 4
   mask: 0
+  spriteRenderer: {fileID: 7042472005489400910}
+  confusion: 0
+  maxConfusion: 0
 --- !u!61 &8938397040550790499
 BoxCollider2D:
   m_ObjectHideFlags: 0

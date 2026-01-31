@@ -8,7 +8,8 @@ public enum PlayerMask
 {
     Me,
     Son,
-    Passerby,
+    PasserbyL,
+    PasserbyR,
     Student,
     Teacher,
 }
@@ -17,6 +18,10 @@ public class Player : MonoBehaviour
     [SerializeField]float movex, movey;
     [SerializeField]private float moveSpeed;
     [SerializeField]private PlayerMask mask;
+    [SerializeField]private SpriteRenderer spriteRenderer;
+    private Color oricolor;
+    public  float confusion;
+    public float maxConfusion;
     // Start is called before the first frame update
     private static Player instance;
     public static Player Instance
@@ -36,39 +41,58 @@ public class Player : MonoBehaviour
     }
     private void Start()
     {
-        moveSpeed = 5f;
+        oricolor = spriteRenderer.color;
     }
     public void Update()
     {
         Move();
         SetMask();
+        NPCbehaviour();
     }
     public void Move()
     {
-        if (mask == PlayerMask.Son) return;
+        if (mask != PlayerMask.Me) return;
         movex = Input.GetAxis("Horizontal") * moveSpeed * Time.deltaTime;
         movey = Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime;
         transform.Translate(movex, movey, 0);
     }
-    public void Gameover()
+
+    public void NPCbehaviour()
     {
-        SceneManager.LoadScene(4);
+        if(mask == PlayerMask.Me) return;
+        else if(mask == PlayerMask.PasserbyL)
+        {
+            movey = -4f;
+            transform.Translate(0, movey, 0);
+        }
+        else if(mask == PlayerMask.PasserbyR)
+        {
+            movey = 4f;
+            transform.Translate(0, movey, 0);
+        }
+        else if(mask == PlayerMask.Teacher)
+        {
+
+        }
     }
+
     public void SetMask()
     {
         if(Input.GetKeyDown(KeyCode.R))
         {
             mask = PlayerMask.Me;
+            spriteRenderer.color = oricolor;
         }
         if(Input.GetKeyDown(KeyCode.Alpha1))
         {
+            spriteRenderer.color = Color.white;
             if (this.gameObject.scene == SceneManager.GetSceneByBuildIndex(1))
             {
                 mask = PlayerMask.Son;
             }
             else if (this.gameObject.scene == SceneManager.GetSceneByBuildIndex(2))
             {
-                mask = PlayerMask.Passerby;
+                mask = PlayerMask.PasserbyL;
             }
             else if (this.gameObject.scene == SceneManager.GetSceneByBuildIndex(3))
             {
@@ -77,9 +101,15 @@ public class Player : MonoBehaviour
         }
         if(Input.GetKeyDown(KeyCode.Alpha2))
         {
-            if (this.gameObject.scene == SceneManager.GetSceneByBuildIndex(3))
+            if(this.gameObject.scene == SceneManager.GetSceneByBuildIndex(2))
+            {
+                mask = PlayerMask.PasserbyR;
+                spriteRenderer.color = Color.blue;
+            }
+            else if (this.gameObject.scene == SceneManager.GetSceneByBuildIndex(3))
             {
                 mask = PlayerMask.Teacher;
+                spriteRenderer.color = Color.blue;
             }
         }
     }

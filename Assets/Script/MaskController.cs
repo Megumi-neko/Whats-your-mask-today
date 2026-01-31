@@ -31,5 +31,6 @@ public class MaskController : MonoBehaviour
             image1.color = Color.white;
             //image2.color = Color.gray;
         }
+
     }
 }

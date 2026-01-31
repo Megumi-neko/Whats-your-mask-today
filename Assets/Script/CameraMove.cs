@@ -25,7 +25,7 @@ public class CameraMove : MonoBehaviour
     private void follow()
     {
         if (viewingTime > 0) return;
-        if (camera.fieldOfView>50)
+        if (camera.fieldOfView>60)
         camera.fieldOfView -= (curField-60)/3*Time.deltaTime;
         transform.position = Vector2.MoveTowards(transform.position, player.transform.position, cameraMoveSpeed * Time.deltaTime);
         transform.position = new Vector3(transform.position.x, transform.position.y, -10);

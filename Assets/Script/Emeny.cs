@@ -6,9 +6,7 @@ using UnityEngine.UIElements;
 
 public class Emeny : MonoBehaviour
 {
-    [SerializeField] private float confusion;
-    [SerializeField] private float maxConfusion;
-    [SerializeField] private float upConfusionSecond;
+
     [SerializeField] private bool isAttack;
     [SerializeField] private float moveSpeed;
     [SerializeField] private float maxSpeed;
@@ -16,6 +14,7 @@ public class Emeny : MonoBehaviour
     [SerializeField] private bool moveState;
     [SerializeField] private Vector2 moveDirection;
     [SerializeField] private int targetIndex;
+
     [SerializeField]private int rotateIndex;
     [SerializeField] private List<float> rotateAngleList;
     [SerializeField] private float rotateSpeed;
@@ -42,24 +41,13 @@ public class Emeny : MonoBehaviour
     {
         if (!isAttack)
         {
-            Changestate();
+            //Changestate();
            RotateWhenStay();
             Move();
         }
   
     }
-    public void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag=="Player"&&isAttack
-            && Vector2.Angle(collision.transform.position - this.transform.position, moveDirection) < 45f)
-        {
-            confusion += upConfusionSecond * Time.deltaTime;
-        }
-        //if(confusion>=maxConfusion)
-        //{
-        //    collision.gameObject.GetComponent<Player>().Gameover();
-        //}
-    }
+
     public void Move()
     {
         moveDirection = new Vector2(Math.Abs((targetList[targetIndex].transform.position - this.transform.position).normalized.x),
