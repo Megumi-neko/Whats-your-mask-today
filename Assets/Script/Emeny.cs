@@ -108,4 +108,8 @@ public class Emeny : MonoBehaviour
             }
         }
     }
+    public void deltadirection()
+    {
+
+    }
 }
