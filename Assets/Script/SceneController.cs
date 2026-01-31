@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour
 {
-    [SerializeField]Animator animator;
+    [SerializeField] Animator animator;
     [SerializeField] GameObject gameObject;
     private void Start()
     {
@@ -37,5 +37,17 @@ public class SceneController : MonoBehaviour
         gameObject.SetActive(true);
         animator.Play("Switch");
         Invoke(nameof(Reload), 1f);
+    }
+    public void Thanks()
+    {
+        SceneManager.LoadScene(4);
+    }
+    public void Exit()
+    {
+        Application.Quit();
+    }
+    public void ReStart()
+    {
+        SceneManager.LoadScene(0);
     }
 }

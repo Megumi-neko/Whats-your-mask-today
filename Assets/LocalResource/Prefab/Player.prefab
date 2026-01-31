@@ -104,8 +104,10 @@ MonoBehaviour:
   moveSpeed: 4
   mask: 0
   spriteRenderer: {fileID: 7042472005489400910}
+  sceneController: {fileID: 0}
+  image: {fileID: 0}
   confusion: 0
-  maxConfusion: 0
+  maxConfusion: 20
 --- !u!61 &8938397040550790499
 BoxCollider2D:
   m_ObjectHideFlags: 0

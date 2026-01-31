@@ -15,10 +15,12 @@ public enum PlayerMask
 }
 public class Player : MonoBehaviour
 {
-    [SerializeField]float movex, movey;
-    [SerializeField]private float moveSpeed;
-    [SerializeField]private PlayerMask mask;
-    [SerializeField]private SpriteRenderer spriteRenderer;
+    [SerializeField] float movex, movey;
+    [SerializeField] private float moveSpeed;
+    [SerializeField] private PlayerMask mask;
+    [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private SceneController sceneController; 
+    [SerializeField] private Image image;
     private Color oricolor;
     public  float confusion;
     public float maxConfusion;
@@ -48,6 +50,15 @@ public class Player : MonoBehaviour
         Move();
         SetMask();
         NPCbehaviour();
+        updateStatus();
+    }
+    private void updateStatus()
+    {
+        image.fillAmount = confusion / maxConfusion;//更新血条
+        if(confusion>=maxConfusion)
+        {
+            sceneController.GameOver();
+        }
     }
     public void Move()
     {
@@ -62,12 +73,12 @@ public class Player : MonoBehaviour
         if(mask == PlayerMask.Me) return;
         else if(mask == PlayerMask.PasserbyL)
         {
-            movey = -4f;
+            movey = -3f*Time.deltaTime;
             transform.Translate(0, movey, 0);
         }
         else if(mask == PlayerMask.PasserbyR)
         {
-            movey = 4f;
+            movey = 3f * Time.deltaTime;
             transform.Translate(0, movey, 0);
         }
         else if(mask == PlayerMask.Teacher)
@@ -113,6 +124,7 @@ public class Player : MonoBehaviour
             }
         }
     }
+    
     public PlayerMask Mask
     {
         get { return mask; }

@@ -435,11 +435,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.919762, y: 2.209969}
   m_EdgeRadius: 0
---- !u!212 &233450598 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 7042472005489400910, guid: dc4d27dfd5a8f5744bad9fd4cea6c098, type: 3}
-  m_PrefabInstance: {fileID: 7305022722393695452}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &279165590 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5148799417805473342, guid: 137d892dd25ef554fb10c6ecf4eeff62, type: 3}
@@ -30040,6 +30035,28 @@ MonoBehaviour:
   cameraMoveSpeed: 3.543
   viewingTime: 3
   curField: 120
+--- !u!114 &1516527705 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2123315200542717870, guid: b9892be4cef29764db994a71b6d5e921, type: 3}
+  m_PrefabInstance: {fileID: 1533861148685141003}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c735462c045385549a56aa223c2dda76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1813416733 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2681246735075350431, guid: 137d892dd25ef554fb10c6ecf4eeff62, type: 3}
+  m_PrefabInstance: {fileID: 6885925561023282079}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1814197593
 GameObject:
   m_ObjectHideFlags: 0
@@ -30401,6 +30418,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 576808735}
   player: {fileID: 5614489}
+  permittedMask: 1
 --- !u!1 &2132622976
 GameObject:
   m_ObjectHideFlags: 0
@@ -30600,12 +30618,41 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4543998941434583041, guid: 137d892dd25ef554fb10c6ecf4eeff62, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4543998941434583041, guid: 137d892dd25ef554fb10c6ecf4eeff62, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4543998941434583041, guid: 137d892dd25ef554fb10c6ecf4eeff62, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4769213524642934922, guid: 137d892dd25ef554fb10c6ecf4eeff62, type: 3}
+      propertyPath: m_Text
+      value: Child
+      objectReference: {fileID: 0}
+    - target: {fileID: 6238334645845197438, guid: 137d892dd25ef554fb10c6ecf4eeff62, type: 3}
+      propertyPath: m_Color.b
+      value: 0.9779874
+      objectReference: {fileID: 0}
+    - target: {fileID: 6238334645845197438, guid: 137d892dd25ef554fb10c6ecf4eeff62, type: 3}
+      propertyPath: m_Color.g
+      value: 0.9779874
+      objectReference: {fileID: 0}
+    - target: {fileID: 6238334645845197438, guid: 137d892dd25ef554fb10c6ecf4eeff62, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7581723723345745750, guid: 137d892dd25ef554fb10c6ecf4eeff62, type: 3}
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 6126092415588963094, guid: 137d892dd25ef554fb10c6ecf4eeff62, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 137d892dd25ef554fb10c6ecf4eeff62, type: 3}
@@ -30622,9 +30669,13 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 6611327042700512848, guid: dc4d27dfd5a8f5744bad9fd4cea6c098, type: 3}
-      propertyPath: spriteRenderer
+      propertyPath: image
       value: 
-      objectReference: {fileID: 233450598}
+      objectReference: {fileID: 1813416733}
+    - target: {fileID: 6611327042700512848, guid: dc4d27dfd5a8f5744bad9fd4cea6c098, type: 3}
+      propertyPath: sceneController
+      value: 
+      objectReference: {fileID: 1516527705}
     - target: {fileID: 8753353660141501233, guid: dc4d27dfd5a8f5744bad9fd4cea6c098, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.0564477

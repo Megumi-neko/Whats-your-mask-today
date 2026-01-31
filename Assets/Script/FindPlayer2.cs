@@ -2,17 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FindPlayer1 : MonoBehaviour
+public class FindPlayer2 : MonoBehaviour
 {
-    [SerializeField]Animator animator;
+    [SerializeField] Animator animator;
     [SerializeField] Player player;
-    [SerializeField] PlayerMask permittedMask;
 
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("player"))
         {
-            if (player.Mask == permittedMask)
+            if (player.Mask != PlayerMask.Me)
             {
                 animator.speed = 1;
                 return;
