@@ -7,21 +7,21 @@ using UnityEngine.UIElements;
 public class Emeny : MonoBehaviour
 {
 
-    [SerializeField] private bool isAttack;
-    [SerializeField] private float moveSpeed;
-    [SerializeField] private float maxSpeed;
-    [SerializeField] private List<GameObject> targetList;
-    [SerializeField] private bool moveState;
-    [SerializeField] private Vector2 moveDirection;
-    [SerializeField] private int targetIndex;
+    [SerializeField] protected bool isAttack;
+    [SerializeField] protected float moveSpeed;
+    [SerializeField] protected float maxSpeed=5f;
+    [SerializeField] protected List<GameObject> targetList;
+    [SerializeField] protected bool moveState;
+    [SerializeField] protected Vector2 moveDirection;
+    [SerializeField] protected int targetIndex;
 
-    [SerializeField]private int rotateIndex;
-    [SerializeField] private List<float> rotateAngleList;
-    [SerializeField] private float rotateSpeed;
-    [SerializeField] private bool isRotate;
-    [SerializeField]private bool isArrive;
+    [SerializeField]protected int rotateIndex;
+    [SerializeField] protected List<float> rotateAngleList;
+    [SerializeField] protected float rotateSpeed;
+    [SerializeField] protected bool isRotate;
+    [SerializeField]protected bool isArrive;
     public float re;
-    private float time;
+    [SerializeField]protected float time;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,7 +33,6 @@ public class Emeny : MonoBehaviour
         isRotate = false;
         isArrive = false;
         moveSpeed = maxSpeed;
-
     }
 
     // Update is called once per frame
@@ -41,8 +40,10 @@ public class Emeny : MonoBehaviour
     {
         if (!isAttack)
         {
-            //Changestate();
-           RotateWhenStay();
+            Isarrive();
+            Isrotate();
+            Ismove();
+            RotateWhenStay();
             Move();
         }
   
@@ -50,8 +51,7 @@ public class Emeny : MonoBehaviour
 
     public void Move()
     {
-        moveDirection = new Vector2(Math.Abs((targetList[targetIndex].transform.position - this.transform.position).normalized.x),
-            -Math.Abs((targetList[targetIndex].transform.position - this.transform.position).normalized.y));
+        moveDirection = transform.InverseTransformDirection((targetList[targetIndex].transform.position - this.transform.position).normalized);
         //moveDirection=(targetList[ttargetIndex].transform.position - this.transform.position).normalized;
         this.transform.Translate(moveDirection * moveSpeed * Time.deltaTime,Space.Self);
     }
@@ -65,51 +65,96 @@ public class Emeny : MonoBehaviour
             time+= Time.deltaTime;
         }
     }
-    public void Changestate()
+    //public void Changestate()
+    //{
+    //    re= Vector2.Distance(this.transform.position, targetList[targetIndex].transform.position);
+    //    if (Vector2.Distance(this.transform.position, targetList[targetIndex].transform.position) < 0.3f)
+    //    {
+    //        isArrive = true;
+    //        isRotate = true;
+    //    }
+    //    else isArrive = false;
+    //    float rotateTime =Math.Abs(rotateAngleList[rotateIndex] / rotateSpeed);
+    //    if (time >= rotateTime)
+    //    {
+    //        moveSpeed = maxSpeed;
+    //        time = 0;
+    //        isRotate = false;
+    //        rotateIndex++;
+    //        if(rotateIndex>rotateAngleList.Count-1)
+    //        {
+    //            rotateIndex =0;
+    //        }
+    //    }
+    //    if (isArrive&&!isRotate)
+    //    {
+    //        if (moveState)
+    //        {
+    //            targetIndex++;
+    //            if(targetIndex>=targetList.Count)
+    //            {
+    //                targetIndex = targetList.Count-2;
+    //                moveState= false;
+    //            }
+    //        }
+    //        else
+    //        {
+    //            targetIndex--;
+    //            if(targetIndex < 0)
+    //            {
+    //                targetIndex =1;
+    //                moveState = true;
+    //            }   
+    //        }
+    //    }
+    //}
+    public virtual void Isarrive()
     {
-        re= Vector2.Distance(this.transform.position, targetList[targetIndex].transform.position);
+        re = Vector2.Distance(this.transform.position, targetList[targetIndex].transform.position);
         if (Vector2.Distance(this.transform.position, targetList[targetIndex].transform.position) < 0.3f)
         {
             isArrive = true;
             isRotate = true;
         }
         else isArrive = false;
-        float rotateTime =Math.Abs(rotateAngleList[rotateIndex] / rotateSpeed);
+    }
+    public void Isrotate()
+    {
+        float rotateTime = Math.Abs(rotateAngleList[rotateIndex] / rotateSpeed);
         if (time >= rotateTime)
         {
             moveSpeed = maxSpeed;
             time = 0;
             isRotate = false;
             rotateIndex++;
-            if(rotateIndex>rotateAngleList.Count-1)
+            if (rotateIndex > rotateAngleList.Count - 1)
             {
-                rotateIndex =0;
+                rotateIndex = 0;
             }
         }
-        if (isArrive&&!isRotate)
+    }
+    public virtual void Ismove()
+    {
+        if (isArrive && !isRotate)
         {
             if (moveState)
             {
                 targetIndex++;
-                if(targetIndex>=targetList.Count)
+                if (targetIndex >= targetList.Count)
                 {
-                    targetIndex = targetList.Count-2;
-                    moveState= false;
+                    targetIndex = targetList.Count - 2;
+                    moveState = false;
                 }
             }
             else
             {
                 targetIndex--;
-                if(targetIndex < 0)
+                if (targetIndex < 0)
                 {
-                    targetIndex =1;
+                    targetIndex = 1;
                     moveState = true;
-                }   
+                }
             }
         }
-    }
-    public void deltadirection()
-    {
-
     }
 }
