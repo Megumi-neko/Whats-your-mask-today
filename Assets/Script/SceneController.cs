@@ -7,6 +7,7 @@ public class SceneController : MonoBehaviour
 {
     [SerializeField] Animator animator;
     [SerializeField] GameObject gameObject;
+    [SerializeField] AudioManager audioManager;
     private void Start()
     {
         if(gameObject == null)  return;
@@ -32,6 +33,7 @@ public class SceneController : MonoBehaviour
     private void Begin()
     {
         gameObject.SetActive(false);
+        //audioManager.CilpPlay(1);
     }
     public void GameOver()
     {

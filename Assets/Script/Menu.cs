@@ -29,7 +29,7 @@ public class Menu : MonoBehaviour
     }
     public void ToStart()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(0);
         Time.timeScale = 1f;
     }
 }
