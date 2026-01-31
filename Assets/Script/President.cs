@@ -29,7 +29,7 @@ public class President :Emeny
     }
     public override void Ismove()
     {
-        if (isArrive&&!isStay)
+        if (isArrive&&time>=stayTime)
         {
             moveSpeed = maxSpeed;
             targetIndex++;

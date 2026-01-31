@@ -7,7 +7,7 @@ public class PrincipleSearch : MonoBehaviour
     [SerializeField] Animator animator;
     [SerializeField] Animator panimator;
     [SerializeField] Player player;
-    [SerializeField] teacher teacher;
+    [SerializeField] Teacher teacher;
     bool round = false;
     bool pround = false;
 
@@ -15,7 +15,7 @@ public class PrincipleSearch : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("teacher"))
         {
-            teacher = collision.GetComponent<teacher>();
+            teacher = collision.GetComponent<Teacher>();
             teacher.Rotate();          
         }
         if(collision.gameObject.CompareTag("player"))
@@ -27,10 +27,12 @@ public class PrincipleSearch : MonoBehaviour
                 if (pround)
                 {
                     panimator.Play("teacherL2");
+                    pround = false;
                 }
                 else
                 {
                     panimator.Play("teacherL1");
+                    pround = true;
                 }
             }
         }
@@ -39,7 +41,7 @@ public class PrincipleSearch : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("player"))
         {
-            if (player.Mask != PlayerMask.Teacher)
+            if (player.Mask == PlayerMask.Teacher)
             {
                 animator.speed = 1;
                 return;
