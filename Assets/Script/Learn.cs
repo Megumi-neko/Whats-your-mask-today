@@ -7,8 +7,8 @@ public class Learn : MonoBehaviour
     [SerializeField] GameObject panel;
     void Start()
     {
-       panel.SetActive(false);
-       Invoke(nameof(Begin), 6f);
+        panel.SetActive(false);
+        Invoke(nameof(Begin), 1f);
     }
 
     

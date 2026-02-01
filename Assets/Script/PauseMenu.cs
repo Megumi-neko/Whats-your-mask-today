@@ -18,30 +18,21 @@ public class Esc : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             ChangePaused();
-            Pause();
         }           
     }
-    public void Pause()
+
+    public void ChangePaused()
     {
-        if (isPaused)
+        if(isPaused==true)
         {
             pauseMenu.SetActive(true);
             Time.timeScale = 0f;
+            isPaused = false;
         }
         else
         {
             pauseMenu.SetActive(false);
             Time.timeScale = 1f;
-        }
-    }
-    public void ChangePaused()
-    {
-        if(isPaused==true)
-        {
-            isPaused = false;
-        }
-        else
-        {
             isPaused =true;
         }
     }
