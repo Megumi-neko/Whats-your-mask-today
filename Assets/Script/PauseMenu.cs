@@ -18,8 +18,8 @@ public class Esc : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             ChangePaused();
-        }
             Pause();
+        }           
     }
     public void Pause()
     {

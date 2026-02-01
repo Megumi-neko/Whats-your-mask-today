@@ -33,7 +33,6 @@ public class SceneController : MonoBehaviour
     private void Begin()
     {
         gameObject.SetActive(false);
-        //audioManager.CilpPlay(1);
     }
     public void GameOver()
     {
