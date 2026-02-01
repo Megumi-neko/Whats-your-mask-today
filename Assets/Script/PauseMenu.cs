@@ -5,6 +5,7 @@ using UnityEngine;
 public class Esc : MonoBehaviour
 {
     [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private GameObject LearnUI;
     private bool isPaused = true;
     // Start is called before the first frame update
     void Start()
@@ -23,17 +24,20 @@ public class Esc : MonoBehaviour
 
     public void ChangePaused()
     {
-        if(isPaused==true)
+        if (!LearnUI.activeSelf)
         {
-            pauseMenu.SetActive(true);
-            Time.timeScale = 0f;
-            isPaused = false;
-        }
-        else
-        {
-            pauseMenu.SetActive(false);
-            Time.timeScale = 1f;
-            isPaused =true;
+            if (isPaused == true)
+            {
+                pauseMenu.SetActive(true);
+                Time.timeScale = 0f;
+                isPaused = false;
+            }
+            else
+            {
+                pauseMenu.SetActive(false);
+                Time.timeScale = 1f;
+                isPaused = true;
+            }
         }
     }
 }

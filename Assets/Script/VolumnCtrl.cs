@@ -8,6 +8,10 @@ public class VolumnCtrl : MonoBehaviour
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private Slider Slider;
     // Start is called before the first frame update
+    void Awake()
+    {
+        audioSource=GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioSource>();    
+    }
     void Start()
     {
         Slider=GetComponent<Slider>();
@@ -21,6 +25,6 @@ public class VolumnCtrl : MonoBehaviour
     }
     public void VolumnChange()
     {
-        audioSource.volume = Slider.value;
+        audioSource.volume = Slider.value/2;
     }
 }
