@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Set : MonoBehaviour
 {
-    [SerializeField]private Esc menu;
+    [SerializeField] private Esc menu;
     [SerializeField] AudioManager audioManager;
     void Awake()
     {
-        audioManager =GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
     // Start is called before the first frame update
     void Start()
@@ -23,6 +23,7 @@ public class Set : MonoBehaviour
     }
     public void SetActiveObj()
     {
+        if (audioManager == null) return;
         audioManager.CilpPlay(0);
         menu.ChangePaused();
         audioManager.CilpPlay(0);
